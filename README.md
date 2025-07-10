@@ -47,6 +47,9 @@ This repository serves as a starter template for Next.js 15 projects. It include
 - [neon](https://neon.com/)
 - [ngrok](https://ngrok.com/)
 - [svix](https://www.npmjs.com/package/svix)
+- [trpc](https://trpc.io/)
+- [react-error-boundary](https://www.npmjs.com/package/react-error-boundary)
+- [upstash](https://upstash.com/)
 
 ---
 

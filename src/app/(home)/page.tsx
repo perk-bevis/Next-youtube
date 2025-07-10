@@ -1,32 +1,25 @@
-// "use client"
-// import { trpc } from '@/trpc/client'
-// // (home) là 1 phần của bộ định tuyến nhưng k phải là 1 phần ủa url
-
-// import '../globals.css'
-// export default function Home() {
-//   const { data } = trpc.hello.useQuery({text : "antonio"})
-//   return (
-//     <div className="">
-//      client component says: { data?.greeting }
-//     </div>
-//   )
-// }
-
 // (home) là 1 phần của bộ định tuyến nhưng k phải là 1 phần ủa url
 
 
 import { getQueryClient, trpc } from '@/trpc/server';
 import { PageClient } from './client';
+import { HydrationBoundary } from '@tanstack/react-query';
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 
 export default async function Home() {
   const queryClient = getQueryClient();
   void queryClient.prefetchQuery(
-    trpc.hello.queryOptions({ text: "Anio"}),
+    trpc.hello.queryOptions({ text: "Anio" }),
   );
 
   return (
-    <div>
-      <PageClient/>
-    </div>
+    <HydrationBoundary>
+      <Suspense fallback={<p>loading....</p>}>
+        <ErrorBoundary fallback={<p>Error....</p>}>
+          <PageClient />
+        </ErrorBoundary>
+      </Suspense>
+    </HydrationBoundary>
   );
 }

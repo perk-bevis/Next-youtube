@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from '@clerk/nextjs'
 import { TRPCReactProvider } from "@/trpc/client";
-import { TRPCProvider } from "@/trpc/client";
+// import { TRPCProvider } from "@/trpc/client";
 // lấy font inter từ gg font
 const inter = Inter({ subsets: ["latin"] })
 
