@@ -1,13 +1,13 @@
-
 import { db } from '@/db';
 import { users } from '@/db/schema';
 //lấy thông tin phiên đăng nhập của người dùng ở phía server.
-import { auth } from '@clerk/nextjs/server';
+import { auth, Token } from '@clerk/nextjs/server';
 
 import { initTRPC, TRPCError } from '@trpc/server';
 import { eq } from 'drizzle-orm';
 import { cache } from 'react';
 import superjson from "superjson"
+import { ratelimit } from '@/lib/ratelimit';
 
 export const createTRPCContext = cache(async () => {
   const { userId } = await auth();
@@ -30,6 +30,7 @@ const t = initTRPC.context<Context>().create({
 export const createTRPCRouter = t.router;
 export const createCallerFactory = t.createCallerFactory;
 export const baseProcedure = t.procedure;
+
 export const protectedProceduce = t.procedure.use(async function isAuthed(opts) {
   const {ctx} = opts
   if(!ctx.clerkUserId){
@@ -44,6 +45,12 @@ export const protectedProceduce = t.procedure.use(async function isAuthed(opts) 
 
   if(!user){
     throw new TRPCError({ code: "UNAUTHORIZED"})
+  }
+
+  const { success } = await ratelimit.limit(user.id)
+
+  if(!success){
+    throw new TRPCError({ code: "TOO_MANY_REQUESTS"})
   }
 
   return opts.next({

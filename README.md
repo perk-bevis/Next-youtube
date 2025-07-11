@@ -116,7 +116,9 @@ src/
 └── 📄 middleware.ts                 # Processes requests before they reach a page
                                      # Often used for authentication checks, redirects
 
-## Database setup
+## 1: Basic layout
+
+## 2: Database setup
 
 📦 <project root>
  ├ 📂 drizzle
@@ -129,9 +131,9 @@ src/
  ├ 📜 package.json
  └ 📜 tsconfig.json
 
-##  Webhook sync
+## 3: Webhook sync
 
-## TRPC setup
+## 3: TRPC setup
 .
 ├── prisma  # <-- if prisma is added
 │   └── [..]
@@ -151,4 +153,18 @@ src/
 │   │   └── trpc.ts      # <-- procedure helpers
 │   └── utils
 │       └── trpc.ts  # <-- your typesafe tRPC hooks
+└── [..]
+
+## 4: TRPC configuration
+
+## 5:  Video categories
+
+tạo folder scripts trong thư mục src:
+├── src
+│   ├── scripts
+│   │   ├── _app.tsx  # <-- add `withTRPC()`-HOC here
+│   │   ├── api
+│   │   │   └── trpc
+│   │   │       └── [trpc].ts  # <-- tRPC HTTP handler
+│   │   └── [..]
 └── [..]
