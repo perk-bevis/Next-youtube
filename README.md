@@ -80,7 +80,7 @@ This repository serves as a starter template for Next.js 15 projects. It include
 ---
 
 ## directory structure
-
+```
 src/
 ├── 📂 app/                           # Contains the application's routes
 │   ├── 📂 (auth)/                    # Route group for authentication pages (login, register)
@@ -115,11 +115,11 @@ src/
 │
 └── 📄 middleware.ts                 # Processes requests before they reach a page
                                      # Often used for authentication checks, redirects
-
+```
 ## 1: Basic layout
 
 ## 2: Database setup
-
+```
 📦 <project root>
  ├ 📂 drizzle
  ├ 📂 src
@@ -130,10 +130,11 @@ src/
  ├ 📜 drizzle.config.ts
  ├ 📜 package.json
  └ 📜 tsconfig.json
-
+```
 ## 3: Webhook sync
 
 ## 3: TRPC setup
+```
 .
 ├── prisma  # <-- if prisma is added
 │   └── [..]
@@ -154,12 +155,14 @@ src/
 │   └── utils
 │       └── trpc.ts  # <-- your typesafe tRPC hooks
 └── [..]
+```
 
 ## 4: TRPC configuration
 
 ## 5:  Video categories
 
 tạo folder scripts trong thư mục src:
+```
 ├── src
 │   ├── scripts
 │   │   ├── _app.tsx  # <-- add `withTRPC()`-HOC here
@@ -168,3 +171,4 @@ tạo folder scripts trong thư mục src:
 │   │   │       └── [trpc].ts  # <-- tRPC HTTP handler
 │   │   └── [..]
 └── [..]
+```

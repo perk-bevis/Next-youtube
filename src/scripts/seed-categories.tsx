@@ -1,1 +1,0 @@
-// TODO: Create script to seed categories

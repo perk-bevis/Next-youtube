@@ -5,6 +5,7 @@
   "scripts": {
     "dev:all": "concurrently \"pnpm run dev\"",
     "dev:webhook": "ngrok http --url=dashing-illegally-redbird.ngrok-free.app 3000",
+    "db:seed": "tsx src/scripts/seed-categories.ts", 
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -30,7 +31,6 @@
     "client-only": "^0.0.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "dotenv": "^17.0.1",
     "drizzle-orm": "^0.44.2",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.525.0",
@@ -53,6 +53,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "concurrently": "^9.2.0",
+    "dotenv": "^17.0.1",
     "drizzle-kit": "^0.31.4",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
